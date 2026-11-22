@@ -14,22 +14,13 @@ import {
   categoryLabel,
 } from '../data/seed';
 import { makeOrderId, makeRaffleCode, readStorage, writeStorage } from '../lib/format';
+import { STORAGE_KEYS } from '../lib/storage';
 import {
   discountForSubtotal,
   normalizeTiers,
 } from '../lib/discount';
 
 const StoreContext = createContext(null);
-
-const KEYS = {
-  products: 'alpasha.products.v1',
-  settings: 'alpasha.settings.v1',
-  offers: 'alpasha.offers.v1',
-  orders: 'alpasha.orders.v1',
-  cart: 'alpasha.cart.v1',
-  wishlist: 'alpasha.wishlist.v1',
-  session: 'alpasha.admin.session',
-};
 
 const mergeSettings = (saved) => {
   const source = saved && typeof saved === 'object' ? saved : {};
@@ -82,9 +73,9 @@ const mergeOffers = (saved) => {
 };
 
 const loadProducts = () => {
-  const saved = readStorage(KEYS.products, null);
+  const saved = readStorage(STORAGE_KEYS.products, null);
   if (!Array.isArray(saved) || !saved.length) {
-    writeStorage(KEYS.products, seedProducts);
+    writeStorage(STORAGE_KEYS.products, seedProducts);
     return seedProducts;
   }
   return saved;
@@ -94,21 +85,21 @@ const loadProducts = () => {
 export function StoreProvider({ children }) {
   const [products, setProducts] = useState(loadProducts);
   const [settings, setSettings] = useState(() =>
-    mergeSettings(readStorage(KEYS.settings, null)),
+    mergeSettings(readStorage(STORAGE_KEYS.settings, null)),
   );
   const [offers, setOffers] = useState(() =>
-    mergeOffers(readStorage(KEYS.offers, null)),
+    mergeOffers(readStorage(STORAGE_KEYS.offers, null)),
   );
   const [orders, setOrders] = useState(() =>
-    readStorage(KEYS.orders, []),
+    readStorage(STORAGE_KEYS.orders, []),
   );
-  const [cart, setCart] = useState(() => readStorage(KEYS.cart, []));
+  const [cart, setCart] = useState(() => readStorage(STORAGE_KEYS.cart, []));
   const [wishlist, setWishlist] = useState(() =>
-    readStorage(KEYS.wishlist, [1, 3]),
+    readStorage(STORAGE_KEYS.wishlist, [1, 3]),
   );
   const [isAdmin, setIsAdmin] = useState(() => {
     try {
-      return sessionStorage.getItem(KEYS.session) === '1';
+      return sessionStorage.getItem(STORAGE_KEYS.session) === '1';
     } catch {
       return false;
     }
@@ -116,12 +107,24 @@ export function StoreProvider({ children }) {
   const [toasts, setToasts] = useState([]);
   const timers = useRef(new Map());
 
-  useEffect(() => writeStorage(KEYS.products, products), [products]);
-  useEffect(() => writeStorage(KEYS.settings, settings), [settings]);
-  useEffect(() => writeStorage(KEYS.offers, offers), [offers]);
-  useEffect(() => writeStorage(KEYS.orders, orders), [orders]);
-  useEffect(() => writeStorage(KEYS.cart, cart), [cart]);
-  useEffect(() => writeStorage(KEYS.wishlist, wishlist), [wishlist]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.products, products);
+  }, [products]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.settings, settings);
+  }, [settings]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.offers, offers);
+  }, [offers]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.orders, orders);
+  }, [orders]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.cart, cart);
+  }, [cart]);
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.wishlist, wishlist);
+  }, [wishlist]);
 
   useEffect(() => {
     const map = timers.current;
@@ -464,7 +467,7 @@ export function StoreProvider({ children }) {
       if (ok) {
         setIsAdmin(true);
         try {
-          sessionStorage.setItem(KEYS.session, '1');
+          sessionStorage.setItem(STORAGE_KEYS.session, '1');
         } catch {
           /* ignore */
         }
@@ -477,7 +480,7 @@ export function StoreProvider({ children }) {
   const logout = useCallback(() => {
     setIsAdmin(false);
     try {
-      sessionStorage.removeItem(KEYS.session);
+      sessionStorage.removeItem(STORAGE_KEYS.session);
     } catch {
       /* ignore */
     }
@@ -491,17 +494,12 @@ export function StoreProvider({ children }) {
     setCart([]);
     setWishlist([1, 3]);
     // اكتب البيانات الافتراضية مباشرة حتى لا تعتمد على إعادة تصيير المكوّنات.
-    writeStorage(KEYS.products, seedProducts);
-    writeStorage(KEYS.settings, seedSettings);
-    writeStorage(KEYS.offers, seedOffers);
-    writeStorage(KEYS.orders, []);
-    writeStorage(KEYS.cart, []);
-    writeStorage(KEYS.wishlist, [1, 3]);
-    try {
-      localStorage.removeItem(KEYS.catalogMigrated);
-    } catch {
-      /* ignore */
-    }
+    writeStorage(STORAGE_KEYS.products, seedProducts);
+    writeStorage(STORAGE_KEYS.settings, seedSettings);
+    writeStorage(STORAGE_KEYS.offers, seedOffers);
+    writeStorage(STORAGE_KEYS.orders, []);
+    writeStorage(STORAGE_KEYS.cart, []);
+    writeStorage(STORAGE_KEYS.wishlist, [1, 3]);
   }, []);
 
   const productById = useCallback(

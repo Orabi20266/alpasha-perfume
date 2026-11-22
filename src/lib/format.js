@@ -46,8 +46,19 @@ export const readStorage = (key, fallback) => {
 export const writeStorage = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+    return true;
   } catch {
-    // Storage can be unavailable (private mode). The app keeps working in memory.
+    // Storage can be unavailable (private mode) or full. The app keeps working in memory.
+    return false;
+  }
+};
+
+export const fitsInStorage = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
   }
 };
 

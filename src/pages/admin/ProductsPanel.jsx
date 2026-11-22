@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import ProductArt from '../../components/ui/ProductArt';
+import ImageUploader from '../../components/admin/ImageUploader';
 import {
   AdminCard,
   ConfirmDialog,
@@ -9,14 +10,15 @@ import {
   Toggle,
 } from '../../components/admin/ui';
 import { useStore } from '../../store/StoreContext';
+import { STORAGE_KEYS } from '../../lib/storage';
 import { CATEGORIES, categoryLabel } from '../../data/seed';
 import { ART_OPTIONS } from '../../data/art';
-import { money } from '../../lib/format';
+import { fitsInStorage, money } from '../../lib/format';
 
 const blankProduct = {
   name: '',
   sku: '',
-  category: 'power-tools',
+  category: 'oud',
   price: '',
   oldPrice: '',
   stock: 10,
@@ -24,7 +26,7 @@ const blankProduct = {
   reviews: 0,
   badge: 'جديد',
   badgeType: 'new',
-  art: 'drill',
+  art: 'royalOud',
   imageUrl: '',
   description: '',
   specs: [],
@@ -32,7 +34,7 @@ const blankProduct = {
 };
 
 function ProductForm({ product, onClose }) {
-  const { saveProduct, toast, settings } = useStore();
+  const { saveProduct, toast, settings, products } = useStore();
   const isNew = !product?.id;
   const [form, setForm] = useState(() => ({
     ...blankProduct,
@@ -64,7 +66,7 @@ function ProductForm({ product, onClose }) {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    saveProduct({
+    const finalProduct = {
       ...form,
       name: form.name.trim(),
       sku: form.sku.trim().toUpperCase(),
@@ -79,7 +81,29 @@ function ProductForm({ product, onClose }) {
         .filter(Boolean),
       featured: Boolean(form.featured),
       specsText: undefined,
-    });
+    };
+
+    const nextProducts = product?.id
+      ? products.map((item) =>
+          item.id === product.id ? { ...item, ...finalProduct } : item,
+        )
+      : [
+          {
+            ...finalProduct,
+            id: products.reduce((max, item) => Math.max(max, item.id), 0) + 1,
+          },
+          ...products,
+        ];
+
+    if (!fitsInStorage(STORAGE_KEYS.products, nextProducts)) {
+      toast(
+        'مساحة التخزين ممتلئة، تعذّر حفظ الصورة. جرّب صورة أصغر أو احذف صور منتجات قديمة.',
+        { type: 'error' },
+      );
+      return;
+    }
+
+    saveProduct(finalProduct);
     toast(isNew ? 'تمت إضافة المنتج بنجاح.' : 'تم تحديث بيانات المنتج.', {
       type: 'success',
     });
@@ -142,7 +166,7 @@ function ProductForm({ product, onClose }) {
             required
             value={form.name}
             onChange={set('name')}
-            placeholder="مثال: مثقاب مطرقي روتاري AP-OUD-100"
+            placeholder="مثال: عطر عود ملكي فاخر — Royal Oud 100 مل"
             error={errors.name}
           />
 
@@ -174,7 +198,7 @@ function ProductForm({ product, onClose }) {
               step="1"
               value={form.price}
               onChange={set('price')}
-              placeholder="649"
+              placeholder="320"
               error={errors.price}
             />
             <Input
@@ -184,7 +208,7 @@ function ProductForm({ product, onClose }) {
               step="1"
               value={form.oldPrice}
               onChange={set('oldPrice')}
-              placeholder="820"
+              placeholder="390"
               hint="اتركه فارغاً بدون خصم"
               error={errors.oldPrice}
             />
@@ -222,7 +246,7 @@ function ProductForm({ product, onClose }) {
               placeholder="الأكثر مبيعاً"
             />
             <Select label="لون الشارة" value={form.badgeType} onChange={set('badgeType')}>
-              <option value="bestseller">أزرق (الأكثر مبيعاً)</option>
+              <option value="bestseller">عنابي (الأكثر مبيعاً)</option>
               <option value="discount">ذهبي (خصم)</option>
               <option value="new">أخضر (جديد)</option>
             </Select>
@@ -236,22 +260,28 @@ function ProductForm({ product, onClose }) {
                 </option>
               ))}
             </Select>
-            <Input
-              label="رابط صورة (اختياري)"
-              dir="ltr"
-              value={form.imageUrl}
-              onChange={set('imageUrl')}
-              placeholder="https://..."
-              hint="إن أدخلت رابطاً سيحل محل الرسم التوضيحي"
-            />
+            <div className="flex items-center rounded-2xl border border-pasha-100 bg-pasha-50/40 p-3 text-[11px] leading-relaxed text-pasha-900">
+              <i className="fa-solid fa-circle-info ml-2 text-base text-pasha-500" />
+              إن لم ترفع صورة من جهازك، سيظهر الرسم التوضيحي المختار تلقائياً.
+            </div>
           </div>
+
+          <ImageUploader
+            value={form.imageUrl}
+            onChange={(dataUrl) => {
+              setForm((current) => ({ ...current, imageUrl: dataUrl }));
+              setErrors((current) => ({ ...current, imageUrl: undefined }));
+            }}
+            art={form.art}
+            name={form.name}
+          />
 
           <Textarea
             label="الوصف"
             rows="2"
             value={form.description}
             onChange={set('description')}
-            placeholder="وصف هندسي مختصر للمنتج..."
+            placeholder="وصف عطري مختصر للمنتج..."
           />
 
           <Textarea
