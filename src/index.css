@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #catalog,
+  #why-pasha,
+  #contact {
+    scroll-margin-top: 8.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    #catalog,
+    #why-pasha,
+    #contact {
+      scroll-margin-top: 7.5rem;
+    }
+  }
+
+  body {
+    @apply bg-[#faf7f2] font-cairo text-slate-800 antialiased;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    @apply bg-pasha-600 text-white;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid #cd4a78;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f7efe9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b9a89a;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b02f5e;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .bg-blueprint {
+    background-color: #3d0d22;
+    background-image:
+      linear-gradient(rgba(205, 74, 120, 0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(205, 74, 120, 0.13) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .bg-blueprint-animated {
+    background-color: #3d0d22;
+    background-image:
+      linear-gradient(rgba(205, 74, 120, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(205, 74, 120, 0.16) 1px, transparent 1px);
+    background-size: 28px 28px;
+    animation: gridPan 16s linear infinite;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-l from-pasha-950 via-pasha-700 to-pasha-500 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-lift {
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px -24px rgba(61, 13, 34, 0.35);
+  }
+
+  /* Shine sweep on buttons */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.35) 45%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+
+  .underline-grow {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease;
+  }
+  .underline-grow:hover {
+    background-size: 100% 2px;
+  }
+}
+
+/* Price range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  background: linear-gradient(to left, #b02f5e var(--fill, 50%), #eadfd6 var(--fill, 50%));
+  height: 6px;
+  border-radius: 999px;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  background-color: #ffffff;
+  border: 3px solid #b02f5e;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(176, 47, 94, 0.4);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 6px rgba(205, 74, 120, 0.15);
+}
+input[type='range']::-moz-range-track {
+  background: #eadfd6;
+  height: 6px;
+  border-radius: 999px;
+}
+input[type='range']::-moz-range-progress {
+  background: #b02f5e;
+  height: 6px;
+  border-radius: 999px;
+}
+input[type='range']::-moz-range-thumb {
+  background: #ffffff;
+  border: 3px solid #b02f5e;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+/* Hide native number spinners in admin */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
