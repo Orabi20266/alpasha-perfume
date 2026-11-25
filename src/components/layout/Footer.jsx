@@ -44,9 +44,9 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="border-t border-slate-200 bg-white pb-8 pt-12 text-slate-600">
+    <footer id="contact" className="border-t border-gold-200/70 bg-ivory pb-8 pt-14 text-slate-600">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 border-b border-slate-100 pb-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 border-b border-line pb-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Logo />
             <p className="text-xs leading-relaxed text-slate-500">
@@ -60,7 +60,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="تواصل مع AL PASHA على واتساب"
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition hover:bg-emerald-500 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-100 bg-white text-emerald-700 transition hover:bg-emerald-500 hover:text-white"
               >
                 <i className="fa-brands fa-whatsapp text-lg" />
               </a>
@@ -71,21 +71,21 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`صفحة الباشا على ${item.label}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl bg-pasha-50 text-pasha-700 transition hover:-translate-y-0.5 hover:bg-pasha-600 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-line bg-white text-gold-700 transition hover:-translate-y-0.5 hover:border-gold-300 hover:bg-gold-50"
                 >
                   <i className={`fa-brands ${item.icon}`} />
                 </a>
               ))}
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-xl border border-emerald-100 bg-emerald-50 px-3 py-2 text-[11px] font-bold text-emerald-700">
+            <div className="inline-flex items-center gap-2 rounded-xl border border-emerald-100 bg-emerald-50/70 px-3 py-2 text-[11px] font-bold text-emerald-700">
               <i className="fa-solid fa-hand-holding-dollar" />
               {settings.payments}
             </div>
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-extrabold text-slate-900">الأقسام الرئيسية</h4>
+            <h4 className="mb-4 font-messiri text-sm font-bold text-ink">الأقسام الرئيسية</h4>
             <ul className="space-y-2.5 text-xs font-medium">
               {[
                 ['men', 'عطور رجالية فاخرة'],
@@ -99,9 +99,9 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={() => openCategory(id)}
-                    className="flex items-center gap-2 text-right transition hover:text-pasha-600"
+                    className="flex items-center gap-2 text-right transition hover:text-gold-700"
                   >
-                    <i className="fa-solid fa-angle-left text-pasha-500" />
+                    <i className="fa-solid fa-angle-left text-gold-600" />
                     {label}
                   </button>
                 </li>
@@ -110,17 +110,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-extrabold text-slate-900">خدمات العملاء</h4>
+            <h4 className="mb-4 font-messiri text-sm font-bold text-ink">خدمات العملاء</h4>
             <ul className="space-y-2.5 text-xs font-medium">
               <li>
-                <Link to="/offers" className="flex items-center gap-2 transition hover:text-pasha-600">
-                  <i className="fa-solid fa-angle-left text-pasha-500" />
+                <Link to="/offers" className="flex items-center gap-2 transition hover:text-gold-700">
+                  <i className="fa-solid fa-angle-left text-gold-600" />
                   عروض الموسم وشرائح الخصم
                 </Link>
               </li>
               <li>
-                <Link to="/raffle" className="flex items-center gap-2 transition hover:text-pasha-600">
-                  <i className="fa-solid fa-angle-left text-pasha-500" />
+                <Link to="/raffle" className="flex items-center gap-2 transition hover:text-gold-700">
+                  <i className="fa-solid fa-angle-left text-gold-600" />
                   سحب الباشا الذهبي وأرقام السحب
                 </Link>
               </li>
@@ -132,9 +132,9 @@ export default function Footer() {
                       type: 'info',
                     })
                   }
-                  className="flex items-center gap-2 transition hover:text-pasha-600"
+                  className="flex items-center gap-2 transition hover:text-gold-700"
                 >
-                  <i className="fa-solid fa-angle-left text-pasha-500" />
+                  <i className="fa-solid fa-angle-left text-gold-600" />
                   سياسة الضمان وضمان الأصالة
                 </button>
               </li>
@@ -146,9 +146,9 @@ export default function Footer() {
                       type: 'info',
                     })
                   }
-                  className="flex items-center gap-2 transition hover:text-pasha-600"
+                  className="flex items-center gap-2 transition hover:text-gold-700"
                 >
-                  <i className="fa-solid fa-angle-left text-pasha-500" />
+                  <i className="fa-solid fa-angle-left text-gold-600" />
                   الشحن والتوصيل لجميع المدن
                 </button>
               </li>
@@ -160,9 +160,9 @@ export default function Footer() {
                       type: 'info',
                     })
                   }
-                  className="flex items-center gap-2 transition hover:text-pasha-600"
+                  className="flex items-center gap-2 transition hover:text-gold-700"
                 >
-                  <i className="fa-solid fa-angle-left text-pasha-500" />
+                  <i className="fa-solid fa-angle-left text-gold-600" />
                   سياسة الاستبدال والاسترجاع
                 </button>
               </li>
@@ -170,8 +170,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-extrabold text-slate-900">تواصل مباشر ونشرة العروض</h4>
-            <div className="mb-4 space-y-2 rounded-2xl border border-pasha-100 bg-pasha-50/80 p-3.5 text-xs">
+            <h4 className="mb-4 font-messiri text-sm font-bold text-ink">تواصل مباشر ونشرة العروض</h4>
+            <div className="mb-4 space-y-2 rounded-xl border border-gold-200 bg-gold-50/50 p-3.5 text-xs">
               <a
                 href={waLink(settings.whatsapp)}
                 target="_blank"
@@ -183,17 +183,17 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${settings.email}`}
-                className="flex items-center gap-2 text-slate-600 transition hover:text-pasha-700"
+                className="flex items-center gap-2 text-slate-600 transition hover:text-pasha-800"
               >
-                <i className="fa-solid fa-envelope text-pasha-600" />
+                <i className="fa-solid fa-envelope text-gold-700" />
                 <span className="truncate">{settings.email}</span>
               </a>
               <p className="flex items-start gap-2 leading-relaxed text-slate-500">
-                <i className="fa-solid fa-location-dot mt-0.5 text-pasha-600" />
+                <i className="fa-solid fa-location-dot mt-0.5 text-gold-700" />
                 {settings.address}
               </p>
               <p className="flex items-start gap-2 leading-relaxed text-slate-500">
-                <i className="fa-solid fa-clock mt-0.5 text-pasha-600" />
+                <i className="fa-solid fa-clock mt-0.5 text-gold-700" />
                 {settings.hours}
               </p>
             </div>
@@ -206,11 +206,11 @@ export default function Footer() {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="البريد الإلكتروني..."
                 aria-label="البريد الإلكتروني للنشرة"
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs focus:border-pasha-500 focus:bg-white focus:outline-none"
+                className="w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-xs focus:border-gold-500 focus:bg-white focus:outline-none"
               />
               <button
                 type="submit"
-                className="shrink-0 rounded-xl bg-pasha-600 px-4 py-2.5 text-xs font-bold text-white transition hover:bg-pasha-700"
+                className="shrink-0 rounded-xl bg-pasha-900 px-4 py-2.5 text-xs font-bold text-gold-100 transition hover:bg-pasha-800"
               >
                 اشتراك
               </button>
@@ -220,7 +220,7 @@ export default function Footer() {
                 href={settings.social.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-[11px] font-bold text-slate-600 transition hover:border-pasha-300 hover:bg-pasha-50 hover:text-pasha-700"
+                className="flex items-center gap-2 rounded-xl border border-line bg-white px-3 py-2 text-[11px] font-bold text-slate-600 transition hover:border-gold-300 hover:bg-gold-50 hover:text-pasha-800"
               >
                 <i className="fa-brands fa-facebook text-base text-[#1877f2]" />
                 تابع صفحة الباشا الرسمية على فيسبوك
@@ -232,12 +232,12 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 pt-6 text-xs text-slate-400 sm:flex-row">
           <p>
             © {new Date().getFullYear()} متجر{' '}
-            <strong className="text-pasha-700">الباشا للعطور</strong>. جميع
+            <strong className="text-pasha-800">الباشا للعطور</strong>. جميع
             الحقوق محفوظة.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <span className="flex items-center gap-1">
-              <i className="fa-solid fa-lock text-pasha-500" /> دفع عند الاستلام
+              <i className="fa-solid fa-lock text-gold-600" /> دفع عند الاستلام
             </span>
             <span>•</span>
             <span>أصالة مضمونة 100%</span>

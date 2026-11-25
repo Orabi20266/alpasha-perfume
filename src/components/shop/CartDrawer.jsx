@@ -98,7 +98,7 @@ export default function CartDrawer() {
         aria-modal="true"
         aria-label="سلة المشتريات"
         aria-hidden={!cartOpen}
-        className={`fixed left-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] ${
+        className={`fixed left-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white shadow-lift transition-transform duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] ${
           cartOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -124,35 +124,35 @@ export default function CartDrawer() {
           </button>
         </div>
 
-        <div className="border-b border-pasha-100 bg-pasha-50 px-5 py-3">
+        <div className="border-b border-gold-200/70 bg-gold-50/50 px-5 py-3">
           <div className="mb-1.5 flex items-center justify-between text-xs font-bold text-pasha-900">
             <span>
-              <i className="fa-solid fa-truck-fast ml-1 text-pasha-600" />
+              <i className="fa-solid fa-truck-fast ml-1 text-gold-700" />
               {subtotal >= threshold
                 ? 'طلبك مؤهل للشحن المجاني'
                 : `أضف بقيمة ${money(remaining, settings.currency)} لشحن مجاني`}
             </span>
-            <span className="text-pasha-600">{progress}%</span>
+            <span className="text-gold-700">{progress}%</span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-pasha-200">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-gold-100">
             <div
-              className="h-full rounded-full bg-gradient-to-l from-pasha-500 to-pasha-700 transition-all duration-500"
+              className="h-full rounded-full bg-gradient-to-l from-pasha-700 to-pasha-900 transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
-        <div className="border-b border-amber-100 bg-gradient-to-l from-amber-50 to-white px-5 py-2.5">
-          <div className="flex items-center justify-between text-[11px] font-bold text-amber-900">
+        <div className="border-b border-gold-200 bg-gradient-to-l from-gold-50 to-white px-5 py-2.5">
+          <div className="flex items-center justify-between text-[11px] font-bold text-gold-900">
             <span className="flex items-center gap-1.5">
-              <i className="fa-solid fa-percent text-amber-600" />
+              <i className="fa-solid fa-percent text-gold-600" />
               خصم الموسم
             </span>
-            <span className={discount > 0 ? 'text-emerald-700' : 'text-amber-600'}>
+            <span className={discount > 0 ? 'text-emerald-700' : 'text-gold-600'}>
               {appliedTier ? `${appliedTier.percent}%` : 'لم تُفعّل بعد'}
             </span>
           </div>
-          <p className="mt-1 text-[10px] leading-relaxed text-amber-800/80">
+          <p className="mt-1 text-[10px] leading-relaxed text-gold-800/80">
             {appliedTier
               ? `خصمك الحالي ${appliedTier.percent}% — وفرت ${money(discount, settings.currency)}`
               : entryTier
@@ -186,7 +186,7 @@ export default function CartDrawer() {
             cartItems.map((line, index) => (
               <div
                 key={line.product.id}
-                className="flex animate-fadeUp items-center gap-3.5 rounded-2xl border border-slate-200/80 bg-slate-50 p-3.5 transition hover:border-pasha-200 hover:bg-pasha-50/40"
+                className="flex animate-fadeUp items-center gap-3.5 rounded-2xl border border-line/80 bg-slate-50 p-3.5 transition hover:border-pasha-200 hover:bg-pasha-50/40"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-1.5">
@@ -200,7 +200,7 @@ export default function CartDrawer() {
                     {money(line.product.price, settings.currency)} للوحدة
                   </span>
                   <div className="mt-2 flex items-center justify-between gap-2">
-                    <div className="inline-flex items-center overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <div className="inline-flex items-center overflow-hidden rounded-xl border border-line bg-white">
                       <button
                         type="button"
                         onClick={() => changeQty(line.product.id, -1)}
@@ -221,7 +221,7 @@ export default function CartDrawer() {
                         +
                       </button>
                     </div>
-                    <span className="text-xs font-black text-pasha-700 sm:text-sm">
+                    <span className="text-xs font-bold text-pasha-700 sm:text-sm">
                       {money(line.product.price * line.qty, settings.currency)}
                     </span>
                   </div>
@@ -240,7 +240,7 @@ export default function CartDrawer() {
         </div>
 
         {cartItems.length > 0 && (
-          <div className="space-y-4 border-t border-slate-200 bg-slate-50 p-5">
+          <div className="space-y-4 border-t border-line bg-slate-50 p-5">
             <div className="space-y-2 text-xs sm:text-sm">
               <div className="flex justify-between text-slate-600">
                 <span>المجموع الفرعي:</span>
@@ -249,7 +249,7 @@ export default function CartDrawer() {
               {discount > 0 && (
                 <div className="flex justify-between rounded-lg bg-emerald-50 px-2 py-1 text-emerald-700">
                   <span>خصم الموسم ({discountRate}%):</span>
-                  <span className="font-black">- {money(discount, settings.currency)}</span>
+                  <span className="font-bold">- {money(discount, settings.currency)}</span>
                 </div>
               )}
               <div className="flex justify-between text-slate-600">
@@ -262,7 +262,7 @@ export default function CartDrawer() {
                   {shipping ? money(shipping, settings.currency) : 'مجاني'}
                 </span>
               </div>
-              <div className="flex items-baseline justify-between border-t border-slate-200 pt-2 text-base font-black text-pasha-950 sm:text-lg">
+              <div className="flex items-baseline justify-between border-t border-line pt-2 text-base font-bold text-pasha-950 sm:text-lg">
                 <span>الإجمالي النهائي:</span>
                 <span className="text-xl text-pasha-700">{money(total, settings.currency)}</span>
               </div>
@@ -270,7 +270,7 @@ export default function CartDrawer() {
                 <i className="fa-solid fa-hand-holding-dollar" />
                 الدفع عند الاستلام — افحص مشترياتك قبل الدفع.
               </p>
-              <p className="flex items-center gap-1.5 rounded-xl bg-amber-50 px-3 py-2 text-[11px] font-bold text-amber-800">
+              <p className="flex items-center gap-1.5 rounded-xl bg-gold-50 px-3 py-2 text-[11px] font-bold text-gold-800">
                 <i className="fa-solid fa-gem" />
                 بعد تأكيد الطلب تحصل على رقم سحب لسحب الباشا الذهبي.
               </p>

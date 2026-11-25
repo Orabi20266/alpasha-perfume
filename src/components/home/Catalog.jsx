@@ -67,37 +67,38 @@ export default function Catalog() {
   );
 
   return (
-    <main id="catalog" className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
-      <div className="mb-3 flex flex-wrap items-end justify-between gap-2 sm:mb-4">
+    <section id="catalog" className="mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6 sm:pt-14 lg:px-8">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-3 sm:mb-8">
         <div>
-          <h1 className="text-xl font-black text-slate-900 sm:text-2xl">
-            منتجات الباشا
-          </h1>
-          <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">
-            عطور شرقية وفرنسية فاخرة — الدفع عند الاستلام
+          <span className="section-eyebrow">المجموعة</span>
+          <h2 className="display mt-2 text-3xl text-ink sm:text-4xl">
+            عطور الباشا
+          </h2>
+          <p className="mt-2 text-xs leading-relaxed text-slate-500 sm:text-sm">
+            عطور شرقية وفرنسية فاخرة — ولمسة من العود والمسك، والدفع عند الاستلام
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => openCheckout('quote')}
-            className="flex items-center gap-1.5 rounded-full border border-pasha-200 bg-white px-3 py-1.5 text-[11px] font-bold text-pasha-700 transition hover:bg-pasha-50"
+            className="flex items-center gap-2 rounded-xl border border-gold-300 bg-white px-4 py-2.5 text-xs font-bold text-pasha-700 transition hover:border-gold-400 hover:bg-gold-50"
           >
-            <i className="fa-solid fa-file-invoice-dollar text-pasha-500" />
+            <i className="fa-solid fa-file-invoice-dollar text-gold-600" />
             عرض سعر خاص
           </button>
           <Link
             to="/offers"
-            className="flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-[11px] font-bold text-amber-800 ring-1 ring-amber-200 transition hover:bg-amber-100"
+            className="flex items-center gap-2 rounded-xl bg-pasha-900 px-4 py-2.5 text-xs font-bold text-gold-100 transition hover:bg-pasha-800"
           >
-            <i className="fa-solid fa-bolt text-amber-500" />
+            <i className="fa-solid fa-bolt text-gold-300" />
             عروض الموسم
           </Link>
         </div>
       </div>
 
-      <Reveal className="mb-5 rounded-3xl border border-slate-200/80 bg-white p-4 shadow-card sm:mb-6 sm:p-5">
-        <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-4">
+      <Reveal className="mb-6 rounded-2xl border border-line bg-white/85 p-4 shadow-card backdrop-blur sm:p-5">
+        <div className="flex items-center justify-between gap-4 border-b border-line pb-4">
           <div
             className="no-scrollbar flex items-center gap-2 overflow-x-auto py-1"
             role="tablist"
@@ -112,18 +113,18 @@ export default function Catalog() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setFilter('category', category.id)}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-2xl px-3 py-2 text-[11px] font-bold transition-all duration-300 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm ${
+                  className={`flex shrink-0 items-center gap-2 border-b-2 px-1 pb-2 pt-1 text-xs font-bold transition-colors duration-300 sm:text-sm ${
                     active
-                      ? 'scale-[1.02] bg-pasha-600 text-white shadow-md'
-                      : 'bg-slate-100 text-slate-700 hover:bg-pasha-50 hover:text-pasha-700'
+                      ? 'border-gold-500 text-pasha-900'
+                      : 'border-transparent text-slate-500 hover:text-pasha-700'
                   }`}
                 >
-                  <i className={`fa-solid ${category.icon} ${active ? 'text-white' : 'text-pasha-600'}`} />
+                  <i className={`fa-solid ${category.icon} ${active ? 'text-gold-600' : 'text-gold-500/70'}`} />
                   <span>{category.label}</span>
                   {category.id === 'all' && (
                     <span
-                      className={`rounded-full px-2 py-0.5 text-[11px] ${
-                        active ? 'bg-white/20 text-white' : 'bg-white text-pasha-700'
+                      className={`rounded-full px-2 py-0.5 text-[10px] ${
+                        active ? 'bg-gold-100 text-gold-800' : 'bg-slate-100 text-slate-500'
                       }`}
                     >
                       {products.length}
@@ -140,7 +141,7 @@ export default function Catalog() {
             id="catalog-extra-filters"
             className={`${showFilters ? 'flex' : 'hidden'} w-full flex-wrap items-center gap-4 sm:flex sm:gap-6 lg:w-auto`}
           >
-            <div className="flex w-full items-center gap-3 rounded-2xl border border-slate-200/70 bg-slate-50 px-4 py-2 sm:w-auto sm:flex-initial">
+            <div className="flex w-full items-center gap-3 rounded-2xl border border-line bg-white px-4 py-2 sm:w-auto sm:flex-initial">
               <i className="fa-solid fa-sliders text-sm text-pasha-600" />
               <div className="flex w-full flex-col sm:w-48">
                 <div className="mb-1 flex justify-between text-xs font-bold text-slate-700">
@@ -196,7 +197,7 @@ export default function Catalog() {
               className={`flex items-center gap-1.5 rounded-2xl border px-3 py-2 text-[11px] font-bold transition sm:hidden ${
                 showFilters || extraFilterCount > 0
                   ? 'border-pasha-300 bg-pasha-50 text-pasha-800'
-                  : 'border-slate-200 bg-slate-50 text-slate-700'
+                  : 'border-line bg-white text-slate-600'
               }`}
             >
               <i className="fa-solid fa-sliders" />
@@ -209,7 +210,7 @@ export default function Catalog() {
             </button>
 
             <div className="whitespace-nowrap text-[11px] font-medium leading-tight text-slate-500 sm:text-sm">
-              عرض <span className="font-black text-pasha-700">{filtered.length}</span> منتج
+              عرض <span className="font-bold text-pasha-700">{filtered.length}</span> منتج
               <span className="hidden sm:inline"> جاهز للشحن</span>
             </div>
 
@@ -218,7 +219,7 @@ export default function Catalog() {
                 value={filters.sort}
                 onChange={(event) => setFilter('sort', event.target.value)}
                 aria-label="ترتيب المنتجات"
-                className="max-w-[168px] cursor-pointer appearance-none truncate rounded-2xl border border-slate-200 bg-slate-50 py-2 pl-8 pr-3 text-[11px] font-bold text-slate-800 transition hover:bg-slate-100 focus:border-pasha-500 focus:outline-none sm:max-w-none sm:py-2.5 sm:pl-9 sm:pr-4 sm:text-sm"
+                className="max-w-[168px] cursor-pointer appearance-none truncate rounded-2xl border border-line bg-white py-2 pl-8 pr-3 text-[11px] font-bold text-slate-800 transition hover:bg-gold-50 focus:border-gold-500 focus:outline-none sm:max-w-none sm:py-2.5 sm:pl-9 sm:pr-4 sm:text-sm"
               >
                 <option value="featured">الأكثر طلباً</option>
                 <option value="price-asc">السعر: الأقل أولاً</option>
@@ -274,7 +275,7 @@ export default function Catalog() {
 
       {filtered.length === 0 ? (
         <Reveal
-          className="mx-auto my-8 max-w-lg rounded-3xl border border-slate-200 bg-white p-12 text-center shadow-card"
+          className="mx-auto my-8 max-w-lg rounded-2xl border border-line bg-white p-12 text-center shadow-card"
         >
           <div className="mx-auto mb-4 flex h-20 w-20 animate-float items-center justify-center rounded-full bg-pasha-50 text-3xl text-pasha-600">
             <i className="fa-solid fa-spray-can-sparkles" />
@@ -294,7 +295,7 @@ export default function Catalog() {
           </button>
         </Reveal>
       ) : (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7 xl:grid-cols-4">
           {filtered.map((product, index) => (
             <Reveal key={product.id} delay={Math.min(index, 8) * 70}>
               <ProductCard product={product} index={index} />
@@ -302,6 +303,6 @@ export default function Catalog() {
           ))}
         </div>
       )}
-    </main>
+    </section>
   );
 }

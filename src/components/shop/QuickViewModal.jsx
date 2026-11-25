@@ -64,7 +64,7 @@ export default function QuickViewModal() {
         if (event.target === event.currentTarget) closeQuickView();
       }}
     >
-      <div className="max-h-[92vh] w-full max-w-3xl animate-scaleIn overflow-y-auto rounded-3xl border border-slate-100 bg-white shadow-2xl">
+      <div className="max-h-[92vh] w-full max-w-3xl animate-scaleIn overflow-y-auto rounded-2xl border border-line bg-white shadow-lift">
         <div className="sticky top-0 z-10 flex items-center justify-between bg-gradient-to-l from-pasha-900 to-pasha-700 px-4 py-3.5 text-white sm:px-6 sm:py-4">
           <div className="flex items-center gap-2">
             <i className="fa-solid fa-spray-can-sparkles text-pasha-300" />
@@ -82,9 +82,9 @@ export default function QuickViewModal() {
 
         <div className="grid grid-cols-1 items-start gap-4 p-4 sm:gap-6 sm:p-6 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="relative flex flex-col items-center justify-center rounded-3xl border border-pasha-100 bg-gradient-to-b from-pasha-50/60 to-pasha-100/50 p-6">
+            <div className="relative flex flex-col items-center justify-center rounded-2xl border border-gold-200/60 bg-gradient-to-b from-white to-pasha-50/70 p-6">
               {pct > 0 && (
-                <span className="absolute left-3 top-3 rounded-lg bg-amber-400 px-2 py-1 text-[11px] font-black text-pasha-950">
+                <span className="absolute left-3 top-3 rounded-lg bg-gold-400 px-2 py-1 text-[11px] font-bold text-pasha-950">
                   وفر {pct}%
                 </span>
               )}
@@ -143,7 +143,7 @@ export default function QuickViewModal() {
               </button>
             </div>
 
-            <h2 className="text-xl font-black text-slate-900 sm:text-2xl">
+            <h2 className="font-messiri text-xl font-bold text-ink sm:text-2xl">
               {product.name}
             </h2>
 
@@ -166,7 +166,7 @@ export default function QuickViewModal() {
               <ul className="space-y-1.5 text-xs text-slate-700">
                 {(product.specs || []).map((spec) => (
                   <li key={spec} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pasha-500" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
                     {spec}
                   </li>
                 ))}
@@ -180,7 +180,7 @@ export default function QuickViewModal() {
                     {money(product.oldPrice, settings.currency)}
                   </span>
                 )}
-                <span className="text-2xl font-black text-pasha-700">
+                <span className="display text-2xl text-pasha-900">
                   {money(product.price, settings.currency)}
                 </span>
                 <span className="mr-1 text-[10px] text-slate-400">شامل الضريبة</span>

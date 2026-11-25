@@ -26,10 +26,10 @@ export default function Testimonials() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
       <Reveal className="mb-6 text-center">
-        <span className="text-xs font-extrabold uppercase tracking-wider text-pasha-600">
+        <span className="section-eyebrow">
           آراء عملاء الباشا
         </span>
-        <h2 className="mt-2 text-2xl font-black text-slate-900 sm:text-3xl">
+        <h2 className="mt-2 display text-3xl text-ink sm:text-4xl">
           ثقة تُبنى مع كل رائحة
         </h2>
       </Reveal>
@@ -39,22 +39,22 @@ export default function Testimonials() {
           <Reveal
             key={review.name}
             delay={index * 100}
-            className="group relative rounded-3xl border border-slate-200 bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-pasha-200 hover:shadow-soft"
+            className="group relative rounded-2xl border border-line bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-gold-300 hover:shadow-lift"
           >
-            <i className="fa-solid fa-quote-right absolute left-5 top-5 text-2xl text-pasha-100 transition group-hover:text-pasha-200" />
+            <i className="fa-solid fa-quote-right absolute left-5 top-5 text-2xl text-gold-200 transition group-hover:text-gold-300" />
             <Stars rating={review.rating} className="text-sm" />
             <p className="mt-3 min-h-[84px] text-xs leading-relaxed text-slate-600">
               “{review.text}”
             </p>
-            <div className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-pasha-100 text-sm font-black text-pasha-700">
+            <div className="mt-4 flex items-center gap-3 border-t border-line pt-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-100 text-sm font-bold text-gold-800">
                 {review.name.replace('أ. ', '').charAt(0)}
               </div>
               <div>
-                <h4 className="text-xs font-extrabold text-slate-800">{review.name}</h4>
+                <h4 className="text-xs font-extrabold text-ink">{review.name}</h4>
                 <p className="text-[11px] text-slate-400">{review.role}</p>
               </div>
-              <span className="mr-auto flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+              <span className="mr-auto flex items-center gap-1 rounded-full bg-gold-50 px-2 py-0.5 text-[10px] font-bold text-gold-700">
                 <i className="fa-solid fa-circle-check" /> موثّق
               </span>
             </div>

@@ -19,11 +19,11 @@ export default function DealsSection() {
     <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
       <Reveal className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-extrabold text-amber-700 ring-1 ring-amber-200">
-            <i className="fa-solid fa-bolt animate-pulse" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-gold-50 px-3 py-1 text-[11px] font-extrabold text-gold-800 ring-1 ring-gold-200">
+            <i className="fa-solid fa-bolt" />
             {offers.badge}
           </span>
-          <h2 className="mt-2 text-2xl font-black text-slate-900 sm:text-3xl">
+          <h2 className="mt-2 display text-3xl text-ink sm:text-4xl">
             {offers.title}
           </h2>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-500 sm:text-sm">
@@ -31,13 +31,13 @@ export default function DealsSection() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="hidden items-center gap-2 rounded-xl border border-dashed border-amber-300 bg-amber-50 px-3 py-2 text-[11px] font-bold text-amber-800 sm:flex">
-            <i className="fa-solid fa-percent text-amber-600" />
+          <span className="hidden items-center gap-2 rounded-xl border border border-gold-200 bg-gold-50 px-3 py-2 text-[11px] font-bold text-gold-800 sm:flex">
+            <i className="fa-solid fa-percent text-gold-600" />
             خصم تلقائي حتى {maxTierPercent(offers.tiers)}%
           </span>
           <Link
             to="/offers"
-            className="btn-shine flex items-center gap-2 rounded-2xl bg-pasha-700 px-4 py-2.5 text-xs font-extrabold text-white shadow transition hover:bg-pasha-800"
+            className="btn-shine flex items-center gap-2 rounded-xl bg-pasha-900 px-4 py-2.5 text-xs font-extrabold text-gold-100 shadow-card transition hover:bg-pasha-800"
           >
             كل العروضات
             <i className="fa-solid fa-arrow-left" />
@@ -53,9 +53,9 @@ export default function DealsSection() {
         ))}
       </div>
 
-      <Reveal className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-pasha-100 bg-pasha-50/60 px-4 py-3 text-xs font-semibold text-pasha-900">
+      <Reveal className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gold-200/70 bg-gold-50/50 px-4 py-3 text-xs font-semibold text-pasha-900">
         <span className="flex items-center gap-2">
-          <i className="fa-solid fa-truck-fast text-pasha-600" />
+          <i className="fa-solid fa-truck-fast text-gold-700" />
           توصيل مجاني للطلبات فوق {settings.freeShippingThreshold.toLocaleString('en-US')}{' '}
           {settings.currency} — والدفع عند الاستلام في كل الطلبات.
         </span>

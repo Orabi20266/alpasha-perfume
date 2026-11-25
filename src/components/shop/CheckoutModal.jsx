@@ -192,7 +192,7 @@ export default function CheckoutModal() {
         if (event.target === event.currentTarget) closeCheckout();
       }}
     >
-      <div className="flex max-h-[92vh] w-full max-w-xl animate-scaleIn flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-2xl">
+      <div className="flex max-h-[92vh] w-full max-w-xl animate-scaleIn flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-lift">
         <div className="flex shrink-0 items-center justify-between bg-gradient-to-l from-pasha-900 to-pasha-700 px-6 py-4 text-white">
           <div className="flex items-center gap-2.5">
             <i
@@ -244,7 +244,7 @@ export default function CheckoutModal() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-black text-slate-900">
+            <h3 className="text-xl font-bold text-slate-900">
               {isQuote ? 'تم استلام طلب عرض السعر' : 'تم اعتماد طلبك بنجاح'}
             </h3>
             <p className="mt-1 text-xs text-slate-500">
@@ -258,7 +258,7 @@ export default function CheckoutModal() {
             <div className="mx-auto mt-5 max-w-sm space-y-2 rounded-2xl border border-pasha-100 bg-pasha-50/70 p-4 text-right text-xs">
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">رقم الطلب:</span>
-                <span className="font-mono font-black text-pasha-800">{success.id}</span>
+                <span className="font-mono font-bold text-pasha-800">{success.id}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">طريقة الدفع:</span>
@@ -275,7 +275,7 @@ export default function CheckoutModal() {
               {!isQuote && (
                 <div className="flex items-center justify-between border-t border-pasha-100 pt-2">
                   <span className="text-slate-500">الإجمالي:</span>
-                  <span className="text-base font-black text-pasha-700">
+                  <span className="text-base font-bold text-pasha-700">
                     {money(success.total, settings.currency)}
                   </span>
                 </div>
@@ -283,28 +283,28 @@ export default function CheckoutModal() {
             </div>
 
             {!isQuote && success.raffleCode && settings.raffle?.enabled && (
-              <div className="mx-auto mt-4 max-w-sm rounded-2xl border-2 border-dashed border-amber-300 bg-gradient-to-br from-amber-50 to-white p-4 text-right">
-                <p className="flex items-center justify-center gap-2 text-[11px] font-black text-amber-800">
+              <div className="mx-auto mt-4 max-w-sm rounded-2xl border border-gold-200 bg-gradient-to-br from-gold-50 to-white p-4 text-right">
+                <p className="flex items-center justify-center gap-2 text-[11px] font-bold text-gold-800">
                   <i className="fa-solid fa-gem" />
                   رقمك في {settings.raffle.title}
                 </p>
                 <button
                   type="button"
                   onClick={copyRaffleCode}
-                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-3 py-2.5 font-mono text-lg font-black tracking-widest text-pasha-900 shadow-sm ring-1 ring-amber-200 transition hover:ring-amber-400"
+                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-3 py-2.5 font-mono text-lg font-bold tracking-widest text-pasha-900 shadow-sm ring-1 ring-gold-200 transition hover:ring-gold-400"
                   title="نسخ رقم السحب"
                   dir="ltr"
                 >
                   {success.raffleCode}
-                  <i className="fa-solid fa-copy text-xs text-amber-600" />
+                  <i className="fa-solid fa-copy text-xs text-gold-600" />
                 </button>
-                <p className="mt-2 text-center text-[10px] leading-relaxed text-amber-900/80">
+                <p className="mt-2 text-center text-[10px] leading-relaxed text-gold-800/80">
                   احتفظ بهذا الرقم وأدخله في صفحة السحب لتسجيل مشاركتك.
                 </p>
                 <Link
                   to="/raffle"
                   onClick={closeCheckout}
-                  className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-3 py-2 text-[11px] font-extrabold text-white transition hover:bg-amber-600"
+                  className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gold-400 px-3 py-2 text-[11px] font-extrabold text-pasha-950 transition hover:bg-gold-300"
                 >
                   <i className="fa-solid fa-ticket" />
                   تسجيل رقمي في السحب
@@ -343,7 +343,7 @@ export default function CheckoutModal() {
                     : `إجمالي الطلبية (${cartCount} قطعة شامل الضريبة)`}
                 </span>
               </div>
-              <span className="text-base font-black text-pasha-700">
+              <span className="text-base font-bold text-pasha-700">
                 {isQuote ? 'مخصص' : money(total, settings.currency)}
               </span>
             </div>
@@ -364,10 +364,10 @@ export default function CheckoutModal() {
                   value={form.name}
                   onChange={update('name')}
                   placeholder="مثال: أحمد العتيبي"
-                  className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
+                  className={`w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
                     errors.name
                       ? 'border-rose-300 focus:border-rose-400'
-                      : 'border-slate-200 focus:border-pasha-500'
+                      : 'border-line focus:border-gold-500'
                   }`}
                 />
                 {errors.name && (
@@ -385,10 +385,10 @@ export default function CheckoutModal() {
                   value={form.phone}
                   onChange={update('phone')}
                   placeholder="05XXXXXXXX"
-                  className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-right text-sm transition focus:bg-white focus:outline-none ${
+                  className={`w-full rounded-xl border bg-white px-3.5 py-2.5 text-right text-sm transition focus:bg-white focus:outline-none ${
                     errors.phone
                       ? 'border-rose-300 focus:border-rose-400'
-                      : 'border-slate-200 focus:border-pasha-500'
+                      : 'border-line focus:border-gold-500'
                   }`}
                 />
                 {errors.phone && (
@@ -407,7 +407,7 @@ export default function CheckoutModal() {
                   value={form.company}
                   onChange={update('company')}
                   placeholder="متجر الهدايا أو الشركة"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm transition focus:border-pasha-500 focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm transition focus:border-pasha-500 focus:bg-white focus:outline-none"
                 />
               </div>
               <div>
@@ -419,10 +419,10 @@ export default function CheckoutModal() {
                   value={form.city}
                   onChange={update('city')}
                   placeholder="اكتب المدينة، مثال: نابلس"
-                  className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
+                  className={`w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
                     errors.city
                       ? 'border-rose-300 focus:border-rose-400'
-                      : 'border-slate-200 focus:border-pasha-500'
+                      : 'border-line focus:border-gold-500'
                   }`}
                 />
                 {errors.city && (
@@ -442,10 +442,10 @@ export default function CheckoutModal() {
                 value={form.address}
                 onChange={update('address')}
                 placeholder="الحي، الشارع، رقم المبنى..."
-                className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
+                className={`w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm transition focus:bg-white focus:outline-none ${
                   errors.address
                     ? 'border-rose-300 focus:border-rose-400'
-                    : 'border-slate-200 focus:border-pasha-500'
+                    : 'border-line focus:border-gold-500'
                 }`}
               />
               {errors.address && (
@@ -466,7 +466,7 @@ export default function CheckoutModal() {
                     ? 'اذكر الكميات المطلوبة وأي تغليف أو نقش خاص...'
                     : 'وقت التوصيل المناسب، تعليمات الوصول، أو أي طلب خاص...'
                 }
-                className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm transition focus:border-pasha-500 focus:bg-white focus:outline-none"
+                className="w-full resize-none rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm transition focus:border-pasha-500 focus:bg-white focus:outline-none"
               />
             </div>
 
@@ -474,7 +474,7 @@ export default function CheckoutModal() {
               <label className="mb-2 block text-xs font-bold text-slate-700">
                 طريقة الدفع
               </label>
-              <div className="flex items-center gap-3 rounded-2xl border-2 border-pasha-500 bg-pasha-50 p-3.5">
+              <div className="flex items-center gap-3 rounded-2xl border border-gold-300 bg-gold-50/60 p-3.5">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-pasha-600 text-white">
                   <i className="fa-solid fa-hand-holding-dollar" />
                 </span>
@@ -491,7 +491,7 @@ export default function CheckoutModal() {
             </div>
 
             {!isQuote && (
-              <div className="space-y-1.5 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs">
+              <div className="space-y-1.5 rounded-2xl border border-line bg-white p-4 text-xs">
                 <div className="flex justify-between text-slate-500">
                   <span>المجموع الفرعي</span>
                   <span className="font-bold text-slate-700">
@@ -501,11 +501,11 @@ export default function CheckoutModal() {
                 {discount > 0 && (
                   <div className="flex justify-between rounded-lg bg-emerald-50 px-2 py-1 text-emerald-700">
                     <span>خصم الموسم ({discountRate}%)</span>
-                    <span className="font-black">- {money(discount, settings.currency)}</span>
+                    <span className="font-bold">- {money(discount, settings.currency)}</span>
                   </div>
                 )}
                 {!discount && entryTier && (
-                  <p className="rounded-lg bg-amber-50 px-2 py-1 text-[10px] font-bold text-amber-800">
+                  <p className="rounded-lg bg-gold-50 px-2 py-1 text-[10px] font-bold text-gold-800">
                     <i className="fa-solid fa-arrow-trend-up ml-1" />
                     أضف {money(Math.max(0, entryTier.threshold - subtotal), settings.currency)} للوصول إلى خصم {entryTier.percent}%
                   </p>
@@ -522,7 +522,7 @@ export default function CheckoutModal() {
                     {shipping ? money(shipping, settings.currency) : 'مجاني'}
                   </span>
                 </div>
-                <div className="flex justify-between border-t border-slate-200 pt-2 text-sm font-black text-pasha-900">
+                <div className="flex justify-between border-t border-line pt-2 text-sm font-bold text-pasha-900">
                   <span>الإجمالي</span>
                   <span>{money(total, settings.currency)}</span>
                 </div>
@@ -531,7 +531,7 @@ export default function CheckoutModal() {
             </div>
 
             <div className="border-t border-slate-100 bg-white p-4">
-              <div className="rounded-2xl border border-dashed border-pasha-200 bg-slate-50/60 p-3">
+              <div className="rounded-2xl border border-dashed border-pasha-200 bg-white/60 p-3">
                 <p className="mb-2 text-center text-[11px] font-bold text-slate-500">
                   اختر طريقة إتمام الطلب
                 </p>

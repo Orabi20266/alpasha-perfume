@@ -9,7 +9,7 @@ const ICONS = {
 
 const TONES = {
   success: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/30',
-  info: 'bg-pasha-500/20 text-pasha-200 border-pasha-400/30',
+  info: 'bg-gold-400/15 text-gold-200 border-gold-300/30',
   error: 'bg-rose-500/15 text-rose-300 border-rose-400/30',
 };
 
@@ -23,7 +23,7 @@ export default function ToastHost() {
         <div
           key={item.id}
           role="status"
-          className="pointer-events-auto animate-fadeUp overflow-hidden rounded-2xl border border-white/10 bg-pasha-950/95 text-white shadow-2xl backdrop-blur"
+          className="pointer-events-auto animate-fadeUp overflow-hidden rounded-xl border border-gold-300/20 bg-pasha-950/95 text-white shadow-2xl backdrop-blur"
         >
           <div className="flex items-center justify-between gap-3 p-4">
             <div className="flex items-start gap-3">
@@ -41,7 +41,7 @@ export default function ToastHost() {
                 <button
                   type="button"
                   onClick={openCart}
-                  className="rounded-xl bg-pasha-600 px-3 py-1.5 text-[11px] font-extrabold text-white transition hover:bg-pasha-500"
+                  className="rounded-xl bg-gold-400 px-3 py-1.5 text-[11px] font-extrabold text-pasha-950 transition hover:bg-gold-300"
                 >
                   عرض السلة
                 </button>
@@ -58,7 +58,7 @@ export default function ToastHost() {
           </div>
           <div className="h-0.5 w-full bg-white/10">
             <div
-              className="h-full bg-pasha-400"
+              className="h-full bg-gold-400"
               style={{ animation: 'progress 4.2s linear forwards' }}
             />
           </div>

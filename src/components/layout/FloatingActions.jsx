@@ -30,7 +30,7 @@ export default function FloatingActions() {
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="العودة للأعلى"
-          className="hidden h-10 w-10 animate-scaleIn items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-lg transition hover:border-pasha-300 hover:text-pasha-700 sm:flex"
+          className="hidden h-10 w-10 animate-scaleIn items-center justify-center rounded-full border border-line bg-white text-slate-500 shadow-card transition hover:border-gold-300 hover:text-gold-700 sm:flex"
         >
           <i className="fa-solid fa-arrow-up text-xs sm:text-sm" />
         </button>

@@ -26,15 +26,15 @@ const FEATURES = [
 export default function WhyUs() {
   return (
     <section id="why-pasha" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <Reveal className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-pasha-900 via-pasha-800 to-pasha-950 p-6 text-white shadow-xl sm:p-10">
-        <div className="pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-pasha-500/10 blur-2xl" />
+      <Reveal className="relative overflow-hidden rounded-2xl border border-gold-400/15 bg-gradient-to-br from-pasha-950 via-pasha-900 to-pasha-950 p-6 text-white shadow-xl sm:p-10">
+        <div className="pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-gold-400/10 blur-2xl" />
         <div className="pointer-events-none absolute -right-10 -top-20 h-64 w-64 rounded-full bg-gold-400/10 blur-2xl" />
 
         <div className="relative mx-auto mb-8 max-w-2xl text-center">
-          <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-pasha-300">
+          <span className="rounded-full border border-gold-300/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">
             الباشا للعطور
           </span>
-          <h2 className="mt-2 text-2xl font-black sm:text-3xl">
+          <h2 className="mt-2 display text-3xl text-white sm:text-4xl">
             لماذا يختار العملاء متجر الباشا؟
           </h2>
           <p className="mt-2 text-xs leading-relaxed text-pasha-100/80 sm:text-sm">
@@ -48,12 +48,12 @@ export default function WhyUs() {
             <Reveal
               key={feature.title}
               delay={index * 90}
-              className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15"
+              className="rounded-xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm transition hover:-translate-y-1 hover:border-gold-300/40 hover:bg-white/10"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-gold-400/40 bg-pasha-500/30 text-xl text-gold-300">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-gold-300/30 bg-gold-400/10 text-xl text-gold-300">
                 <i className={`fa-solid ${feature.icon}`} />
               </div>
-              <h3 className="mb-1.5 text-base font-extrabold">{feature.title}</h3>
+              <h3 className="mb-1.5 font-messiri text-base font-bold">{feature.title}</h3>
               <p className="text-xs leading-relaxed text-pasha-100/80">{feature.text}</p>
             </Reveal>
           ))}

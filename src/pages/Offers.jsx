@@ -28,18 +28,18 @@ export default function Offers() {
         <span className="text-pasha-700">العروضات</span>
       </nav>
 
-      <Reveal className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-pasha-950 via-pasha-800 to-pasha-600 p-6 text-white shadow-xl sm:p-10">
+      <Reveal className="relative overflow-hidden rounded-2xl border border-gold-400/20 bg-gradient-to-br from-pasha-950 via-pasha-800 to-pasha-600 p-6 text-white shadow-xl sm:p-10">
         <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-pasha-400/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 right-10 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 right-10 h-64 w-64 rounded-full bg-gold-400/10 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_45%)]" />
 
         <div className="relative grid items-center gap-6 lg:grid-cols-12">
           <div className="space-y-3 lg:col-span-8">
-            <span className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-3 py-1 text-[11px] font-black text-pasha-950">
-              <i className="fa-solid fa-bolt animate-pulse" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-3 py-1 text-[11px] font-extrabold text-pasha-950">
+              <i className="fa-solid fa-bolt" />
               {offers.badge}
             </span>
-            <h1 className="text-2xl font-black leading-tight sm:text-4xl">
+            <h1 className="display text-3xl leading-tight text-white sm:text-5xl">
               {offers.title}
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-pasha-100/90">
@@ -58,12 +58,12 @@ export default function Offers() {
                 <i className="fa-brands fa-whatsapp text-lg" />
                 اطلب العرض عبر واتساب
               </a>
-              <span className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[11px] font-bold text-pasha-100">
+              <span className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-[11px] font-bold text-pasha-100">
                 <i className="fa-solid fa-hand-holding-dollar text-pasha-300" />
                 الدفع عند الاستلام
               </span>
-              <span className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[11px] font-bold text-pasha-100">
-                <i className="fa-solid fa-gem text-amber-300" />
+              <span className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-[11px] font-bold text-pasha-100">
+                <i className="fa-solid fa-gem text-gold-300" />
                 سحب الباشا الذهبي
               </span>
             </div>
@@ -75,7 +75,7 @@ export default function Offers() {
                 <span className="text-[11px] font-bold text-pasha-200">
                   خصم الموسم
                 </span>
-                <span className="rounded-full bg-amber-400 px-2.5 py-0.5 text-[10px] font-black text-pasha-950">
+                <span className="rounded-full bg-gold-400 px-2.5 py-0.5 text-[10px] font-extrabold text-pasha-950">
                   حتى {topPercent}%
                 </span>
               </div>
@@ -89,7 +89,7 @@ export default function Offers() {
                     <span className="text-[11px] font-bold text-pasha-100">
                       {money(tier.threshold, settings.currency)}+
                     </span>
-                    <span className="text-sm font-black text-amber-300">
+                    <span className="display text-xl text-gold-300">
                       {tier.percent}%
                     </span>
                   </div>
@@ -107,9 +107,9 @@ export default function Offers() {
         </div>
       </Reveal>
 
-      <Reveal className="mt-4 flex flex-col items-center justify-between gap-3 rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white p-4 sm:flex-row">
+      <Reveal className="mt-4 flex flex-col items-center justify-between gap-3 rounded-xl border border-gold-200 bg-gradient-to-l from-gold-50 to-white p-4 sm:flex-row">
         <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300 to-amber-500 text-xl text-amber-900 shadow">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-300 to-gold-500 text-xl text-pasha-950 shadow">
             <i className="fa-solid fa-gem" />
           </span>
           <div>
@@ -124,7 +124,7 @@ export default function Offers() {
         </div>
         <Link
           to="/raffle"
-          className="flex shrink-0 items-center gap-2 rounded-xl bg-pasha-800 px-4 py-2.5 text-xs font-extrabold text-white transition hover:bg-pasha-900"
+          className="flex shrink-0 items-center gap-2 rounded-xl bg-pasha-900 px-4 py-2.5 text-xs font-extrabold text-gold-100 transition hover:bg-pasha-900"
         >
           <i className="fa-solid fa-ticket" />
           صفحة السحب
@@ -133,7 +133,7 @@ export default function Offers() {
 
       <div className="mb-5 mt-8 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-xl font-black text-slate-900 sm:text-2xl">
+          <h2 className="display text-2xl text-ink sm:text-3xl">
             المنتجات المشمولة بالعرض
           </h2>
           <p className="text-xs text-slate-500">
@@ -143,7 +143,7 @@ export default function Offers() {
         </div>
         <Link
           to="/"
-          className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 transition hover:border-pasha-300 hover:text-pasha-700"
+          className="flex items-center gap-2 rounded-xl border border-line bg-white px-4 py-2 text-xs font-bold text-slate-600 transition hover:border-gold-300 hover:text-gold-700"
         >
           <i className="fa-solid fa-arrow-right" />
           العودة للمتجر
@@ -159,7 +159,7 @@ export default function Offers() {
           ))}
         </div>
       ) : (
-        <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center shadow-card">
+        <div className="rounded-2xl border border-line bg-white p-12 text-center shadow-card">
           <i className="fa-solid fa-tags mb-3 text-3xl text-pasha-300" />
           <h3 className="text-lg font-extrabold text-slate-800">لا توجد عروضات حالياً</h3>
           <p className="mt-1 text-xs text-slate-500">
@@ -177,9 +177,9 @@ export default function Offers() {
           <Reveal
             key={step.title}
             delay={index * 100}
-            className="rounded-2xl border border-slate-200 bg-white p-4 shadow-card"
+            className="rounded-xl border border-line bg-white p-4 shadow-card"
           >
-            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-pasha-50 text-pasha-600">
+            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gold-50 text-gold-700">
               <i className={`fa-solid ${step.icon}`} />
             </div>
             <h4 className="text-sm font-extrabold text-slate-800">{step.title}</h4>
